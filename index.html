@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoryArc Strategies | Narrative Strategy for Crypto &amp; Fintech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0D0D0D;
+      --surface:  #161616;
+      --text:     #FFFFFF;
+      --muted:    #888888;
+      --accent:   #EF9F27;
+      --border:   #2A2A2A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITIES ── */
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    h1, h2, h3 { font-family: 'Inter', sans-serif; font-weight: 700; line-height: 1.15; }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 24px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { opacity: 0.82; }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+    section { padding: 100px 0; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── NAV ── */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      max-height: 48px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
+      filter: invert(1) brightness(2);
+    }
+
+    /* ── HERO ── */
+
+    #hero {
+      padding: 120px 0 100px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      max-width: 820px;
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    /* ── LOGO BAR ── */
+
+    #logos {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .logo-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .logo-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 72px;
+      width: max-content;
+      animation: scroll-logos 28s linear infinite;
+    }
+
+    .logo-track:hover { animation-play-state: paused; }
+
+    @keyframes scroll-logos {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo-item img {
+      height: 40px;
+      width: auto;
+      filter: grayscale(1) brightness(10);
+      opacity: 0.55;
+      transition: filter 0.2s, opacity 0.2s;
+    }
+
+    .logo-item img:hover {
+      filter: grayscale(1) brightness(1) sepia(1) saturate(4) hue-rotate(5deg);
+      opacity: 1;
+    }
+
+    /* ── SERVICES ── */
+
+    #services { border-bottom: 1px solid var(--border); }
+
+    .services-heading {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .service-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .service-for {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .service-divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    .services-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .services-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .services-note a:hover { text-decoration: underline; }
+
+    /* ── PROOF POINTS ── */
+
+    #proof {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proof-heading {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+      max-width: 480px;
+    }
+
+    .proof-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .proof-row {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      text-align: center;
+      max-width: 220px;
+    }
+
+    .proof-stat {
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .proof-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ── */
+
+    #about {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-heading {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .about-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .about-right {
+      padding-top: 8px;
+    }
+
+    .about-detail {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .about-detail:last-child { border-bottom: 1px solid var(--border); }
+
+    .about-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .about-detail-value {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+
+    #contact {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-heading {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .contact-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+
+    footer {
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-email:hover { color: var(--accent); }
+
+    /* ── PROBLEM ── */
+
+    #problem {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-heading {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .problem-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+
+    .problem-body p + p {
+      margin-top: 20px;
+    }
+
+    /* ── TESTIMONIALS ── */
+
+    #testimonials {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .testimonials-heading {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 56px;
+      max-width: 480px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .testimonial-quote {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .testimonial-attribution {
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── RESPONSIVE ── */
+
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      section { padding: 72px 0; }
+
+      .services-grid     { grid-template-columns: 1fr; }
+      .proof-row         { gap: 48px; }
+      .about-grid        { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid      { grid-template-columns: 1fr; gap: 48px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .proof-row { flex-direction: column; align-items: center; gap: 40px; }
+      #hero { padding: 80px 0 72px; }
+      .hero-sub { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#hero">
+      <img class="nav-logo" src="logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
+    </a>
+    <a class="btn btn-accent" href="#contact">Work With Us</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <h1 class="hero-h1">The market can't trust what it doesn't understand.</h1>
+    <p class="hero-sub">StoryArc helps companies communicate clearly in industries where trust matters.</p>
+    <a class="btn btn-accent" href="#contact">Work With Us</a>
+  </div>
+</section>
+
+<!-- ── LOGO BAR ── -->
+<section id="logos">
+  <div class="logo-label">Worked with teams at:</div>
+  <div class="logo-track-wrap">
+    <div class="logo-track" id="logo-track">
+      <div class="logo-item"><img src="logos/Coindesk.png"                   alt="CoinDesk"></div>
+      <div class="logo-item"><img src="logos/Kraken.png"                     alt="Kraken"></div>
+      <div class="logo-item"><img src="logos/Bitstamp.png"                   alt="Bitstamp"></div>
+      <div class="logo-item"><img src="logos/Babylon.svg"                    alt="Babylon"></div>
+      <div class="logo-item"><img src="logos/Render NEtwork.svg"             alt="Render Network"></div>
+      <div class="logo-item"><img src="logos/milkroad.png"                   alt="Milk Road" style="height:64px"></div>
+      <div class="logo-item"><img src="logos/unchained.png"                  alt="Unchained" style="filter: grayscale(1) invert(1) brightness(10);"></div>
+      <div class="logo-item"><img src="logos/bitcointreasuries.net.svg"      alt="Bitcoin Treasuries"></div>
+      <div class="logo-item"><img src="logos/Let There Be.png"               alt="Let There Be" style="height:56px"></div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="logo-item"><img src="logos/Coindesk.png"                   alt="CoinDesk"></div>
+      <div class="logo-item"><img src="logos/Kraken.png"                     alt="Kraken"></div>
+      <div class="logo-item"><img src="logos/Bitstamp.png"                   alt="Bitstamp"></div>
+      <div class="logo-item"><img src="logos/Babylon.svg"                    alt="Babylon"></div>
+      <div class="logo-item"><img src="logos/Render NEtwork.svg"             alt="Render Network"></div>
+      <div class="logo-item"><img src="logos/milkroad.png"                   alt="Milk Road" style="height:64px"></div>
+      <div class="logo-item"><img src="logos/unchained.png"                  alt="Unchained" style="filter: grayscale(1) invert(1) brightness(10);"></div>
+      <div class="logo-item"><img src="logos/bitcointreasuries.net.svg"      alt="Bitcoin Treasuries"></div>
+      <div class="logo-item"><img src="logos/Let There Be.png"               alt="Let There Be" style="height:56px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section id="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="problem-heading">Smart companies get misunderstood all the time.</h2>
+    <div class="problem-body">
+      <p>Usually it's not because the product is weak.</p>
+      <p>The issue is that the messaging starts sounding like every other company in the category. Generic claims. Abstract language. Big promises nobody remembers five minutes later.</p>
+      <p>You see it a lot in technical industries. Founders spend years building something nuanced, then flatten it into marketing copy that could belong to almost anyone.</p>
+      <p>That gap matters more than people think.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="services-heading">What we do</h2>
+    <p class="about-body" style="max-width:680px;margin-bottom:48px;">We help companies communicate more clearly, more consistently, and with a stronger point of view. Sometimes that means tightening positioning. Sometimes it means fixing a content system that's become noisy or disconnected. Sometimes it's helping a founder sound like an actual person again.<br><br>The work changes. The goal usually doesn't.<br><br>People need to understand what makes your company different before they can trust it.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-name">Positioning &amp; Messaging</div>
+        <div class="service-divider"></div>
+        <p class="service-desc">Clearer language. Sharper differentiation. Less filler. Especially for companies operating in crowded or highly technical categories.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-name">Content &amp; Editorial</div>
+        <div class="service-divider"></div>
+        <p class="service-desc">Newsletters, educational content, launch messaging, long-form writing, executive voice, and ongoing editorial direction. Built to sound like your company. Not like a content machine.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-name">Strategic Communication</div>
+        <div class="service-divider"></div>
+        <p class="service-desc">Launches, fundraising, category creation, shifts in market positioning, moments where the stakes are higher and the messaging actually matters.</p>
+      </div>
+
+    </div>
+    <p class="services-note">Pricing is scoped to your stage and goals. <a href="#contact">Get in touch</a> to talk through what makes sense.</p>
+  </div>
+</section>
+
+<!-- ── PROOF POINTS ── -->
+<section id="proof">
+  <div class="container">
+    <div class="section-label">Results</div>
+    <h2 class="proof-heading">A few outcomes</h2>
+    <div class="proof-rows">
+
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="proof-stat">701%</div>
+          <div class="proof-desc">Increase in site traffic</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-stat">5,600+</div>
+          <div class="proof-desc">Newsletter subscribers with engagement well above industry averages</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-stat">2M+</div>
+          <div class="proof-desc">Monthly impressions across managed channels</div>
+        </div>
+      </div>
+
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="proof-stat">3,500+</div>
+          <div class="proof-desc">Institutional readers across finance and emerging technology</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-stat">300+</div>
+          <div class="proof-desc">Educational and strategic articles published</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">Selected Perspectives</div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">John quickly understood the complexity of our business and translated it into a strategy that drove real growth.</p>
+        <div class="testimonial-attribution">
+          <div class="testimonial-name">Alex Gelbert</div>
+          Founder &amp; CEO, Let There Be
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">A rare combination of strategic thinking and operational execution.</p>
+        <div class="testimonial-attribution">
+          <div class="testimonial-name">Benjamin Parr</div>
+          CMO &amp; Growth Strategist
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">John made complex subjects easier to understand without oversimplifying them.</p>
+        <div class="testimonial-attribution">
+          <div class="testimonial-name">Aysenur Yükselal Aji</div>
+          Marketing &amp; Growth Leader
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <h2 class="about-heading">Built inside the companies doing the work.</h2>
+        <p class="about-body">StoryArc came out of years spent inside fast-moving companies dealing with launches, market shifts, regulation, growth pressure, and the constant challenge of explaining complicated things clearly.<br><br>That experience changes how you think about communication.<br><br>A lot of messaging problems aren't really writing problems. They're clarity problems upstream. The company knows too much internally, so the outside language becomes vague without realizing it.<br><br>That's usually where the work starts.</p>
+      </div>
+      <div class="about-right">
+        <div class="about-detail">
+          <div class="about-detail-label">Specialty</div>
+          <div class="about-detail-value">Crypto infrastructure, exchanges, Bitcoin-native companies, institutional-facing protocols</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Experience</div>
+          <div class="about-detail-value">8+ years operating inside crypto and fintech companies</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Approach</div>
+          <div class="about-detail-value">Education before promotion. Narrative before tactics. Clarity before scale.</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Location</div>
+          <div class="about-detail-value">Remote, working with teams globally</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="contact-heading">Let's talk.</h2>
+        <p class="contact-sub">Tell us where you are and where you want to go. We'll figure out if we're the right fit, and if we are, we move fast.</p>
+      </div>
+      <div>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="Name" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" placeholder="you@company.com" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="Company" placeholder="Your company" autocomplete="organization">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Tell us about your content goals…" autocomplete="off" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-accent">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2026 StoryArc Strategies LLC</span>
+    <a class="footer-email" href="mailto:storyarcstrategies@gmail.com">storyarcstrategies@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = document.getElementById('name').value;
+    var email   = document.getElementById('email').value;
+    var company = document.getElementById('company').value;
+    var message = document.getElementById('message').value;
+    var body    = 'Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + company + '\n\nMessage:\n' + message;
+    window.location.href = 'mailto:storyarcstrategies@gmail.com?subject=StoryArc%20Inquiry&body=' + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
