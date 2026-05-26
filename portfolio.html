@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | StoryArc Strategies</title>
+  <meta name="description" content="Selected work by StoryArc Strategies — institutional newsletters, long-form editorial, market intelligence, and social campaigns for Babylon Labs, Kraken, Bitstamp, and Unchained Crypto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0D0D0D;
+      --surface:  #161616;
+      --text:     #FFFFFF;
+      --muted:    #888888;
+      --accent:   #EF9F27;
+      --border:   #2A2A2A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    h1 { font-family: 'Inter', sans-serif; font-weight: 800; line-height: 1.1; }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 24px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { opacity: 0.82; }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* ── NAV ── */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      max-height: 48px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ── HERO ── */
+
+    #hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 20px;
+    }
+
+    /* ── CATEGORY SECTIONS ── */
+
+    .category-section {
+      border-bottom: 1px solid var(--border);
+      padding: 72px 0;
+    }
+
+    .category-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* ── WORK GRID ── */
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .work-grid.single { grid-template-columns: 1fr; }
+
+    .work-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .work-client {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .work-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .work-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .work-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    .work-format {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .work-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .work-link:hover { opacity: 0.7; }
+
+    /* ── ARCHIVE ── */
+
+    #archive {
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+
+    footer { padding: 32px 0; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-email:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .category-section { padding: 56px 0; }
+      .work-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/">
+      <img class="nav-logo" src="logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
+    </a>
+    <a class="btn btn-accent" href="/#contact">Work With Us</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Portfolio</div>
+    <h1 class="hero-h1">Selected Work</h1>
+  </div>
+</section>
+
+<!-- ── 1. THOUGHT LEADERSHIP ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Thought Leadership</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">How a 10,000 BTC Stake Redefines Bitcoin Staking</div>
+        <p class="work-desc">Turned a single on-chain event into a narrative-driven piece explaining protocol significance to both retail and institutional readers without oversimplifying.</p>
+        <div class="work-footer">
+          <span class="work-format">Blog · Long-Form</span>
+          <a class="work-link" href="https://babylonlabs.io/blog/how-a-10-000-btc-stake-redefines-bitcoin-staking" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Bitcoin's Native Use Cases</div>
+        <p class="work-desc">Foundational SEO-friendly explainer covering BTC utility — evergreen, education-first content designed to anchor a long-term content program.</p>
+        <div class="work-footer">
+          <span class="work-format">Blog · Evergreen</span>
+          <a class="work-link" href="https://babylonlabs.io/blog/bitcoin-native-use-cases" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Making Bitcoin Productive: Highlights from Babylon Labs' First Quarterly Founders Call</div>
+        <p class="work-desc">Synthesizes complex technical and community communications into a polished public-facing recap — a critical enterprise content skill.</p>
+        <div class="work-footer">
+          <span class="work-format">Blog · Recap</span>
+          <a class="work-link" href="https://babylonlabs.io/blog/inaugural-quarterly-founders-call-april-august-2025" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">Opinion: Why There Will Never Be Another Bitcoin</div>
+        <p class="work-desc">Long-form opinion piece making the case for Bitcoin's irreplicable origin story — social contract, path-dependence, and fair launch. Editorial voice and conviction-led writing for a major exchange brand.</p>
+        <div class="work-footer">
+          <span class="work-format">Blog · Opinion</span>
+          <a class="work-link" href="https://blog.kraken.com/crypto-education/opinion-why-there-will-never-be-another-bitcoin" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. SOCIAL & VIDEO CONTENT ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Social &amp; Video Content</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Most Bitcoin Sits Idle. Why?</div>
+        <p class="work-desc">X thread breaking down Bitcoin's idle capital problem through the "not your keys" ethos — conversational social voice for a deeply technical protocol.</p>
+        <div class="work-footer">
+          <span class="work-format">X Thread</span>
+          <a class="work-link" href="https://x.com/babylonlabs_io/status/1968389544052670772" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Why Do Trustless Bitcoin Vaults Matter?</div>
+        <p class="work-desc">Companion thread explaining BTCFi collateral without middlemen — shows ability to sequence multi-thread social campaigns around a product narrative.</p>
+        <div class="work-footer">
+          <span class="work-format">X Thread</span>
+          <a class="work-link" href="https://x.com/babylonlabs_io/status/1968706618033586695" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">xStocks</div>
+        <div class="work-title">$30B. The Industry Standard, Measured.</div>
+        <p class="work-desc">Milestone post distilling xStocks' market leadership into a single number — 120,000 holders, 60% category volume, 6 chains. 16.9K views, 274 likes. Milestone content that lands because it's earned, not manufactured.</p>
+        <div class="work-footer">
+          <span class="work-format">X · Milestone Post</span>
+          <a class="work-link" href="https://x.com/xStocksFi/status/2054116638107009115" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">xStocks</div>
+        <div class="work-title">There Is No Bell for xStocks</div>
+        <p class="work-desc">Earnings calendar post tying real-time TradFi events to xStocks' 24/7 availability — CT-native format, 20K impressions, 164 likes. Financial fluency and platform instincts in a single post.</p>
+        <div class="work-footer">
+          <span class="work-format">X · Earnings Content</span>
+          <a class="work-link" href="https://x.com/xStocksFi/status/2051781349292335439" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">xStocks</div>
+        <div class="work-title">This Week in TradFi — Weekly Macro Thread</div>
+        <p class="work-desc">Real-time macro recap thread covering Mag-7 earnings, Fed split, Iran talks, and OPEC exit — CT voice with sourced follow-on threads for each story. Speed, range, and ecosystem participation in one thread.</p>
+        <div class="work-footer">
+          <span class="work-format">X · Macro Thread</span>
+          <a class="work-link" href="https://x.com/xStocksFi/status/2050138267723383201" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">The Stock Market Closes for 133.5 Hours a Week</div>
+        <p class="work-desc">Short-form video script that reframes the core value prop of tokenized equities in a single punchy stat — campaign-level social copywriting at its tightest.</p>
+        <div class="work-footer">
+          <span class="work-format">Video Script · Social</span>
+          <a class="work-link" href="https://x.com/krakenfx/status/2027403515253891536" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">What Are Stablecoins? (Video)</div>
+        <p class="work-desc">Educational video script and storyboard explaining stablecoin mechanics — collateralized, algorithmic, and crypto-backed models — produced for Bitstamp's YouTube channel to extend the Learn Center into video format.</p>
+        <div class="work-footer">
+          <span class="work-format">Video Script · Storyboard</span>
+          <a class="work-link" href="https://www.youtube.com/@bitstamp" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">What Is DeFi? (Video)</div>
+        <p class="work-desc">Video script and storyboard translating decentralized finance fundamentals for a retail audience — lending, borrowing, DEXs, and yield farming in under 3 minutes.</p>
+        <div class="work-footer">
+          <span class="work-format">Video Script · Storyboard</span>
+          <a class="work-link" href="https://www.youtube.com/@bitstamp" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. EDUCATIONAL ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Educational</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">What Are Trustless Bitcoin Vaults?</div>
+        <p class="work-desc">Technical thought leadership piece explaining the mechanism behind BTC-native collateral — witness encryption, garbled circuits, no custodians. Written to support a $15M a16z fundraise narrative.</p>
+        <div class="work-footer">
+          <span class="work-format">Blog · Thought Leadership</span>
+          <a class="work-link" href="https://babylonlabs.io/learn/what-are-trustless-bitcoin-vaults" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">Taproot Primer — An Upgrade For The Ages</div>
+        <p class="work-desc">Long-form technical primer on Bitcoin's Taproot upgrade — Schnorr signatures, MAST, and the broader implications for privacy and programmability. Produced as a flagship educational PDF for Kraken's institutional audience.</p>
+        <div class="work-footer">
+          <span class="work-format">Educational · PDF</span>
+          <a class="work-link" href="https://kraken.docsend.com/view/a9u57i4a8gcbwh6s" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">Proof of Work vs. Proof of Stake</div>
+        <p class="work-desc">Foundational consensus mechanism explainer written for Kraken's Learn Center — clearly articulates the philosophical and technical tradeoffs between Bitcoin's PoW and Ethereum's PoS at a moment of peak public interest during the Merge.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Explainer</span>
+          <a class="work-link" href="https://www.kraken.com/learn/proof-of-work-vs-proof-of-stake" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">What Is DeFi?</div>
+        <p class="work-desc">Top-of-funnel DeFi explainer written for Kraken's Learn Center — covers lending, borrowing, DEXs, and yield farming for a retail audience entering the space for the first time.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Explainer</span>
+          <a class="work-link" href="https://www.kraken.com/learn/what-is-defi" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">The Byzantine Generals' Problem</div>
+        <p class="work-desc">One of crypto's most important foundational concepts explained accessibly for Bitstamp's Learn Center. Demonstrates ability to translate computer science theory into plain-language educational content.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Explainer</span>
+          <a class="work-link" href="https://www.bitstamp.net/learn/blockchain/what-is-the-byzantine-generals-problem/" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">The Intersection of AI and Blockchain</div>
+        <p class="work-desc">Forward-looking editorial piece connecting two of the most-discussed technology trends — written for Bitstamp's Learn Center at a moment of peak institutional interest in both sectors.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Explainer</span>
+          <a class="work-link" href="https://www.bitstamp.net/learn/blockchain/the-intersection-of-ai-and-blockchain/" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">Crypto Categories Handbook</div>
+        <p class="work-desc">Comprehensive reference guide categorizing the full landscape of crypto asset types — a durable educational resource for Bitstamp's Learn Center to help retail investors navigate an increasingly complex market.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Guide</span>
+          <a class="work-link" href="https://www.bitstamp.net/s/documents/bitstamp-crypto-categories-handbook.pdf" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. PRODUCT & GTM CONTENT ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Product &amp; GTM Content</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">Top Players Go Where They're Valued. Your Portfolio Should Too.</div>
+        <p class="work-desc">Product launch video for Kraken's brokerage transfer offer — promotional copy that converts without feeling like an ad.</p>
+        <div class="work-footer">
+          <span class="work-format">Video Script · Product Launch</span>
+          <a class="work-link" href="https://x.com/krakenfx/status/2044417540118495730" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Kraken</div>
+        <div class="work-title">"Nobody Told Me Buying Stocks Was This Easy"</div>
+        <p class="work-desc">UX-focused product video script written to appeal to retail first-time equity buyers — demonstrates range beyond crypto-native audiences into mainstream fintech adoption.</p>
+        <div class="work-footer">
+          <span class="work-format">Video Script · Retail</span>
+          <a class="work-link" href="https://x.com/krakenfx/status/2052809154763399464" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. EDITORIAL ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Editorial</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Unchained Crypto</div>
+        <div class="work-title">How the Bitcoins in Your ETF Really Get Sourced</div>
+        <p class="work-desc">News-driven explainer debunking a widely-shared claim about BTC OTC desk shortages — editorial instincts, source-led reporting, and market mechanics translated fast.</p>
+        <div class="work-footer">
+          <span class="work-format">Editorial · News Explainer</span>
+          <a class="work-link" href="https://unchainedcrypto.com/how-the-bitcoins-in-your-etf-really-get-sourced/" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">The Legal Landscape of Cryptocurrencies</div>
+        <p class="work-desc">Comprehensive editorial overview of global crypto regulation — jurisdictional differences, compliance frameworks, and what evolving law means for exchange users. Written at a moment of peak regulatory uncertainty across the industry.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Editorial</span>
+          <a class="work-link" href="https://www.bitstamp.net/learn/crypto-101/the-legal-landscape-of-cryptocurrencies/" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Bitstamp</div>
+        <div class="work-title">The Art of Outsmarting Crypto Scammers</div>
+        <p class="work-desc">Security-focused editorial covering the most common crypto scam vectors — phishing, impersonation, rug pulls — written to protect Bitstamp's retail user base and build platform trust at scale.</p>
+        <div class="work-footer">
+          <span class="work-format">Learn Center · Editorial</span>
+          <a class="work-link" href="https://www.bitstamp.net/learn/security/the-art-of-outsmarting-crypto-scammers/" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 6. NEWSLETTERS ── -->
+<div class="category-section">
+  <div class="container">
+    <div class="category-label">Newsletters</div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Bitcoin Benchmark — September 2025</div>
+        <p class="work-desc">Flagship institutional newsletter translating Bitcoin macro, restaking mechanics, and treasury flows into executive-level narrative for enterprise BD and investor comms.</p>
+        <div class="work-footer">
+          <span class="work-format">Newsletter · PDF</span>
+          <a class="work-link" href="https://dhewxdsd0qahx.cloudfront.net/5174115/Bitcoin_Benchmark_September_2025.pdf?1762183037" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Bitcoin Benchmark — August 2025</div>
+        <p class="work-desc">Second issue in a recurring series — demonstrates ongoing editorial ownership and consistent institutional-grade narrative delivery for enterprise and investor audiences.</p>
+        <div class="work-footer">
+          <span class="work-format">Newsletter · PDF</span>
+          <a class="work-link" href="https://dhewxdsd0qahx.cloudfront.net/5174112/Bitcoin_Benchmark_newsletter_August_2025.pdf?1762182916" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-client">Babylon Labs</div>
+        <div class="work-title">Bitcoin Benchmark — July 2025</div>
+        <p class="work-desc">Third issue in the recurring institutional series — establishes the newsletter as an ongoing editorial program delivering consistent Bitcoin macro narrative for investor and enterprise audiences.</p>
+        <div class="work-footer">
+          <span class="work-format">Newsletter · PDF</span>
+          <a class="work-link" href="https://dhewxdsd0qahx.cloudfront.net/5174099/Bitcoin_Benchmark_newsletter_Jule_2025.pdf?1762182132" target="_blank" rel="noopener noreferrer">View piece →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHIVE BANNER ── -->
+<section id="archive">
+  <div class="container" style="text-align:center;padding-top:80px;padding-bottom:80px;">
+    <div style="font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:16px;">500+ articles. 15+ clients. 8+ years.</div>
+    <p style="font-size:16px;color:var(--muted);margin-bottom:36px;">This is a curated selection.</p>
+    <a class="btn btn-accent" style="font-size:15px;padding:14px 32px;" href="https://jmetais.contently.com/" target="_blank" rel="noopener noreferrer">View Curated Archive →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2026 StoryArc Strategies LLC</span>
+    <a class="footer-email" href="mailto:John@getstoryarc.com">John@getstoryarc.com</a>
+  </div>
+</footer>
+
+<script>
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

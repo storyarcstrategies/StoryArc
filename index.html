@@ -575,7 +575,10 @@
     <a href="#hero">
       <img class="nav-logo" src="logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
     </a>
-    <a class="btn btn-accent" href="#contact">Work With Us</a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="/portfolio.html" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Portfolio</a>
+      <a class="btn btn-accent" href="#contact">Work With Us</a>
+    </div>
   </div>
 </nav>
 
@@ -803,11 +806,14 @@
 <footer>
   <div class="container footer-inner">
     <span class="footer-copy">© 2026 StoryArc Strategies LLC</span>
-    <a class="footer-email" href="mailto:storyarcstrategies@gmail.com">storyarcstrategies@gmail.com</a>
+    <a class="footer-email" href="mailto:John@getstoryarc.com">John@getstoryarc.com</a>
   </div>
 </footer>
 
 <script>
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = e.target;
