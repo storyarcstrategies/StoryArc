@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <!-- EDIT: Update title, description, and og tags for each article -->
+  <title>Article Title | StoryArc Strategies</title>
+  <meta name="description" content="One sentence describing what this article covers and who it's for. Under 160 characters.">
+  <meta property="og:title" content="Article Title" />
+  <meta property="og:description" content="One sentence describing what this article covers." />
+  <meta property="og:image" content="https://getstoryarc.com/og-image.png" />
+  <meta property="og:url" content="https://getstoryarc.com/articles/article-slug" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://getstoryarc.com/og-image.png" />
+
+  <!-- EDIT: Update schema fields for each article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Article Title",
+    "description": "One sentence describing what this article covers.",
+    "datePublished": "2026-05-26",
+    "dateModified": "2026-05-26",
+    "author": {
+      "@type": "Person",
+      "name": "John Metais",
+      "url": "https://getstoryarc.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StoryArc Strategies",
+      "url": "https://getstoryarc.com"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0D0D0D;
+      --surface:  #161616;
+      --text:     #FFFFFF;
+      --muted:    #888888;
+      --accent:   #EF9F27;
+      --border:   #2A2A2A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 24px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { opacity: 0.82; }
+
+    .btn-accent { background: var(--accent); color: #000; }
+
+    /* ── NAV ── */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      max-height: 48px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover { color: var(--text); }
+
+    /* ── ARTICLE HEADER ── */
+
+    .article-header {
+      padding: 64px 0 56px;
+      border-bottom: 1px solid var(--border);
+      max-width: 760px;
+    }
+
+    .article-back {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.15s;
+    }
+
+    .article-back:hover { color: var(--text); }
+
+    .article-category {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .article-meta-divider {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+
+    /* ── ARTICLE BODY ── */
+
+    .article-body {
+      padding: 64px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-content {
+      max-width: 680px;
+    }
+
+    .article-content p {
+      font-size: 17px;
+      color: #CCCCCC;
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .article-content h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-top: 52px;
+      margin-bottom: 16px;
+    }
+
+    .article-content h3 {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-content li {
+      font-size: 17px;
+      color: #CCCCCC;
+      line-height: 1.75;
+    }
+
+    .article-content li + li { margin-top: 8px; }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 24px;
+      margin: 36px 0;
+    }
+
+    .article-content blockquote p {
+      font-size: 20px;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .article-content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-content a:hover { text-decoration: underline; }
+
+    .article-content strong { color: var(--text); font-weight: 600; }
+
+    .article-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── ARTICLE CTA ── */
+
+    .article-cta {
+      padding: 72px 0;
+    }
+
+    .cta-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .cta-heading {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 520px;
+      line-height: 1.15;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* ── FOOTER ── */
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-email:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .article-header { padding: 48px 0 40px; }
+      .article-body { padding: 48px 0 64px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-text-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/">
+      <img class="nav-logo" src="/logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
+    </a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <div class="nav-text-links" style="display:flex;align-items:center;gap:24px;">
+        <a href="/articles" class="nav-link">Articles</a>
+        <a href="/portfolio" class="nav-link">Portfolio</a>
+      </div>
+      <a class="btn btn-accent" href="/#contact">Work With Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HEADER ── -->
+<div style="border-bottom:1px solid var(--border);">
+  <div class="container">
+    <header class="article-header">
+      <a class="article-back" href="/articles">← All Articles</a>
+      <!-- EDIT: Update category, title, date, and read time -->
+      <div class="article-category">Strategy</div>
+      <h1 class="article-title">Article Title Goes Here</h1>
+      <div class="article-meta">
+        <span>May 26, 2026</span>
+        <div class="article-meta-divider"></div>
+        <span>6 min read</span>
+      </div>
+    </header>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-body">
+  <div class="container">
+    <div class="article-content">
+
+      <!-- EDIT: Replace with article content -->
+
+      <p>Opening paragraph. This is where the article begins. Set up the problem or the idea immediately — don't ease in with context. The reader decided to keep reading based on the headline; reward that decision in the first sentence.</p>
+
+      <p>Second paragraph continues the setup. By the end of the first two paragraphs, the reader should know exactly what they're going to learn and why it matters.</p>
+
+      <h2>First Section Heading</h2>
+
+      <p>Section body copy. Keep paragraphs short — three to five sentences maximum. One idea per paragraph.</p>
+
+      <blockquote>
+        <p>Pull quotes go here. Use them for the single most important sentence in the article.</p>
+      </blockquote>
+
+      <p>Continue the argument or narrative. Each paragraph should earn its place by advancing the point.</p>
+
+      <h2>Second Section Heading</h2>
+
+      <p>More body copy. At this point in the article, you're building toward the resolution or recommendation.</p>
+
+      <ul>
+        <li>Bullet points work for lists of parallel items</li>
+        <li>Keep each item to one line where possible</li>
+        <li>Don't use bullets as a substitute for prose</li>
+      </ul>
+
+      <h2>Closing Section</h2>
+
+      <p>Final section. Land the point. A good closing paragraph tells the reader what to think or do differently now that they've read this.</p>
+
+      <p>End with a strong final sentence. Not a summary — a conclusion.</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="article-cta" style="border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="cta-label">Work With Us</div>
+    <div class="cta-heading">If this is how we think, imagine what we build.</div>
+    <p class="cta-sub">StoryArc helps crypto and fintech companies communicate clearly. Tell us where you are and where you want to go.</p>
+    <a class="btn btn-accent" href="/#contact">Start a conversation</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2026 StoryArc Strategies LLC</span>
+    <a class="footer-email" href="mailto:John@getstoryarc.com">John@getstoryarc.com</a>
+  </div>
+</footer>
+
+<script>
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

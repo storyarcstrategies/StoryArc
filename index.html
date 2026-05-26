@@ -11,6 +11,8 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://getstoryarc.com/og-image.png" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <title>StoryArc Strategies | Narrative Strategy for Crypto &amp; Fintech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -564,6 +566,7 @@
       .proof-row { flex-direction: column; align-items: center; gap: 40px; }
       #hero { padding: 80px 0 72px; }
       .hero-sub { font-size: 16px; }
+      .nav-text-links { display: none; }
     }
   </style>
 </head>
@@ -576,7 +579,10 @@
       <img class="nav-logo" src="logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
     </a>
     <div style="display:flex;align-items:center;gap:24px;">
-      <a href="/portfolio.html" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Portfolio</a>
+      <div class="nav-text-links" style="display:flex;align-items:center;gap:24px;">
+        <a href="/articles" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Articles</a>
+        <a href="/portfolio" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Portfolio</a>
+      </div>
       <a class="btn btn-accent" href="#contact">Work With Us</a>
     </div>
   </div>

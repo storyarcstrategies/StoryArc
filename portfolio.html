@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <title>Portfolio | StoryArc Strategies</title>
   <meta name="description" content="Selected work by StoryArc Strategies — institutional newsletters, long-form editorial, market intelligence, and social campaigns for Babylon Labs, Kraken, Bitstamp, and Unchained Crypto.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,6 +230,10 @@
       .work-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
+
+    @media (max-width: 600px) {
+      .nav-text-links { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -238,7 +244,12 @@
     <a href="/">
       <img class="nav-logo" src="logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" style="filter:invert(1)">
     </a>
-    <a class="btn btn-accent" href="/#contact">Work With Us</a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <div class="nav-text-links" style="display:flex;align-items:center;gap:24px;">
+        <a href="/articles" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Articles</a>
+      </div>
+      <a class="btn btn-accent" href="/#contact">Work With Us</a>
+    </div>
   </div>
 </nav>
 
