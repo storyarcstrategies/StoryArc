@@ -5,6 +5,7 @@ publishDate: 2026-06-08
 category: Strategy
 tags: [crypto, learn-center, crypto-education, educational-content, content-strategy, content-marketing, seo, kraken, bitstamp]
 ogImage: /og-learn-center.png
+cardImage: /card-learn-center.png
 status: published
 ---
 

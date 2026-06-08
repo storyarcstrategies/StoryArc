@@ -74,6 +74,14 @@ const schema = {
     </div>
   </div>
 
+  {ogImage && (
+    <div class="post-hero-img">
+      <div class="container">
+        <img src={ogImage} alt={title} />
+      </div>
+    </div>
+  )}
+
   <div class="post-body">
     <div class="container">
       <div class="post-content">

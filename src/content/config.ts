@@ -11,6 +11,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     status: z.enum(['draft', 'published']).default('draft'),
     ogImage: z.string().optional(),
+    cardImage: z.string().optional(),
   }),
 });
 
