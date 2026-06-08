@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, publishDate, updatedDate, category } = post.data;
+const { title, description, publishDate, updatedDate, category, tags, ogImage } = post.data;
 
 const formattedDate = publishDate.toLocaleDateString('en-US', {
   year: 'numeric', month: 'long', day: 'numeric',
@@ -17,11 +17,20 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
 
+const articleUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = ogImage
+  ? `https://getstoryarc.com${ogImage}`
+  : 'https://getstoryarc.com/og-image.png';
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
   description,
+  url: articleUrl,
+  image: ogImageUrl,
+  keywords: tags.join(', '),
+  articleSection: category,
   datePublished: publishDate.toISOString(),
   dateModified: (updatedDate ?? publishDate).toISOString(),
   author: {
@@ -33,6 +42,10 @@ const schema = {
     '@type': 'Organization',
     name: 'StoryArc Strategies',
     url: 'https://getstoryarc.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://getstoryarc.com/logos/StoryArc_Black_Transparent.png',
+    },
   },
 };
 ---
@@ -41,6 +54,7 @@ const schema = {
   title={`${title} | StoryArc Strategies`}
   description={description}
   ogType="article"
+  ogImage={ogImageUrl}
   schema={schema}
 >
   <div class="container">
