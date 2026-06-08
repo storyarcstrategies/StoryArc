@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = 'https://getstoryarc.com/og-image.png',
+  ogType = 'website',
+  schema,
+} = Astro.props;
+
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="zx3Qafq-cCHGyqZscWbIcAr3ufdwqxUFPOZ9oCt-qd8" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content={ogType} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImage} />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="/">
+      <img class="nav-logo" src="/logos/StoryArc_Black_Transparent.png" alt="StoryArc Strategies" />
+    </a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <div class="nav-text-links" style="display:flex;align-items:center;gap:24px;">
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/portfolio" class="nav-link">Portfolio</a>
+      </div>
+      <a class="btn btn-accent" href="/#contact">Work With Us</a>
+    </div>
+  </div>
+</nav>
+
+<slot />
+
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2026 StoryArc Strategies LLC</span>
+    <a class="footer-email" href="mailto:John@getstoryarc.com">John@getstoryarc.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
