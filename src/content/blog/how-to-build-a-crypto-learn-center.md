@@ -2,7 +2,7 @@
 title: "How to Build a Crypto Learn Center That People Actually Trust"
 description: "Most crypto learn centers fail for the same reason: they don't trust the reader. The framework I used at Kraken and Bitstamp to build ones that actually work."
 publishDate: 2026-06-08
-category: Strategy
+category: Learn
 tags: [crypto, learn-center, crypto-education, educational-content, content-strategy, content-marketing, seo, kraken, bitstamp]
 ogImage: /og-learn-center.png
 cardImage: /card-learn-center.png

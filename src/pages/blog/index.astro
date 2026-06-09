@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => data.status === 'published');
 const posts = allPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const categories = [...new Set(posts.map(p => p.data.category))].sort();
 ---
 
 <Base
@@ -20,10 +21,20 @@ const posts = allPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publ
 
 <section id="articles" style="padding:80px 0;">
   <div class="container">
+
+    {categories.length > 1 && (
+      <div class="blog-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        {categories.map(cat => (
+          <button class="filter-btn" data-filter={cat.toLowerCase()}>{cat}</button>
+        ))}
+      </div>
+    )}
+
     <div class="articles-grid">
 
       {posts.length > 0 ? posts.map((post) => (
-        <a class="article-card" href={`/blog/${post.slug}`}>
+        <a class="article-card" href={`/blog/${post.slug}`} data-category={post.data.category.toLowerCase()}>
           <div class="article-card-content">
             <div class="article-category">{post.data.category}</div>
             <div class="article-title">{post.data.title}</div>
@@ -56,4 +67,19 @@ const posts = allPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publ
 <script>
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
+
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.article-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      cards.forEach(card => {
+        card.style.display =
+          filter === 'all' || card.dataset.category === filter ? '' : 'none';
+      });
+    });
+  });
 </script>
