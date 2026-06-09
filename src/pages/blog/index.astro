@@ -22,7 +22,7 @@ const categories = [...new Set(posts.map(p => p.data.category))].sort();
 <section id="articles" style="padding:80px 0;">
   <div class="container">
 
-    {categories.length > 1 && (
+    {categories.length > 0 && (
       <div class="blog-filters">
         <button class="filter-btn active" data-filter="all">All</button>
         {categories.map(cat => (
